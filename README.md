@@ -24,7 +24,9 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository (LF characters).
+
+This starter is designed to work closely with this front-end in Next.js [Next js starter](https://github.com/Void061/nextjs-starter)
 
 ## Project setup
 
@@ -48,5 +50,14 @@ $ npm run start:prod
 ## Features
 
 - ✨ Prisma ORM
+- ✨ Prisma basic seeds system
 - ✨ Supabase auth
+- ✨ Husky
+- ✨ Prettier
+- ✨ Eslint
+- ✨ LF characters
+
+## Set-up
+
+- Populate JWT_SECRET in envs (Go to supabase > settings > API > JWT secret)
 

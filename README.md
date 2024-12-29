@@ -47,6 +47,12 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Fast CRUD generator via nest cli
+
+```bash 
+$ nest g resource entityName
+```
+
 ## Features
 
 - ✨ Prisma ORM

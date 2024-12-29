@@ -1,20 +1,24 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 
+import { CurrentUser } from '@/auth/auth.decorator';
 import { AuthService } from '@/auth/auth.service';
-import { RegisterWithCredentialsDTO } from '@/auth/common/auth.dto';
+import {
+  RegisterWithCredentialsDTO,
+  UserPrincipalDTO,
+} from '@/auth/common/auth.dto';
+import { JwtAuthGuard } from '@/auth/guards/jwt.auth.guard';
 import { BASE_AUTH_ROUTE, WITH_CREDENTIALS } from '@/auth/routes';
 
 @Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Get(`${BASE_AUTH_ROUTE}/${WITH_CREDENTIALS.LOGIN}`)
-  async loginWithCredentials() {
-    return this.authService.loginWithCredentials();
-  }
-
-  @Post(`${BASE_AUTH_ROUTE}/${WITH_CREDENTIALS.REGISTER}`)
-  async registerWithCredentials(@Body() userData: RegisterWithCredentialsDTO) {
-    return this.authService.registerWithCredentials(userData);
+  @Post(`${BASE_AUTH_ROUTE}/${WITH_CREDENTIALS.SIGNUP}`)
+  @UseGuards(JwtAuthGuard)
+  async storeUserOnDB(
+    @CurrentUser() { sub: userId }: UserPrincipalDTO,
+    @Body() userData: RegisterWithCredentialsDTO
+  ) {
+    return this.authService.storeUserOnDB(userData, userId);
   }
 }

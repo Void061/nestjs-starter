@@ -58,7 +58,7 @@ $ nest g resource entityName
 - ✨ Prisma ORM (Postgres)
 - ✨ internationalization (Detects the country of the current user or locates the user)
 - ✨ Prisma basic seeds system
-- ✨ Supabase auth
+- ✨ Supabase auth (Recognize and translate supabase access tokens)
 - ✨ Husky
 - ✨ Prettier
 - ✨ Eslint

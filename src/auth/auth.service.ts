@@ -3,7 +3,6 @@ import {
   NotFoundException,
   UnprocessableEntityException,
 } from '@nestjs/common';
-
 import { I18nService } from 'nestjs-i18n';
 
 import { RegisterWithCredentialsDTO } from '@/auth/common/auth.dto';

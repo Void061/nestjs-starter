@@ -1,5 +1,4 @@
 import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-
 import { Post as PrismaPost } from '@prisma/client';
 
 import { CurrentUser } from '@/auth/auth.decorator';

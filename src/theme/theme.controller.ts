@@ -1,5 +1,4 @@
 import { Controller, Get } from '@nestjs/common';
-
 import { Theme } from '@prisma/client';
 
 import { ThemeService } from '@/theme/theme.service';

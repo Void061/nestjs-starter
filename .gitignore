@@ -1,0 +1,48 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Directory di output
+dist/
+build/
+out/
+
+# Ambiente
+.env
+
+# Editor/IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Sistemi operativi
+.DS_Store
+Thumbs.db
+
+# Tipi di file generici
+*.tsbuildinfo
+*.tmp
+*.bak
+
+# Configurazioni temporanee
+coverage/
+.cache/
+
+# Test e linting
+jest-cache/
+jest-output/
+eslintcache

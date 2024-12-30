@@ -3,7 +3,6 @@ import {
   NotFoundException,
   UnprocessableEntityException,
 } from '@nestjs/common';
-
 import { Country, Theme, User } from '@prisma/client';
 import { I18nService } from 'nestjs-i18n';
 

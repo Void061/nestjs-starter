@@ -1,5 +1,4 @@
 import { Controller, Get } from '@nestjs/common';
-
 import { Country } from '@prisma/client';
 
 import { CountryService } from './country.service';

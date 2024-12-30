@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Patch, UseGuards } from '@nestjs/common';
-
 import { Theme } from '@prisma/client';
 
 import { CurrentUser } from '@/auth/auth.decorator';

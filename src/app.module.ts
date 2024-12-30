@@ -2,7 +2,6 @@ import * as path from 'path';
 
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-
 import { AcceptLanguageResolver, I18nModule } from 'nestjs-i18n';
 
 import { AppController } from '@/app.controller';

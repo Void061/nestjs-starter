@@ -1,14 +1,17 @@
 import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 
 import { Post } from '@prisma/client';
+import { I18nService } from 'nestjs-i18n';
 
-import { KNOWN_ERRORS } from '@/common/constants';
 import { CreatePostDto } from '@/post/dto/create-post.dto';
 import { PrismaService } from '@/utils/prisma.service';
 
 @Injectable()
 export class PostService {
-  constructor(protected readonly prismaService: PrismaService) {}
+  constructor(
+    protected readonly prismaService: PrismaService,
+    protected readonly i18nService: I18nService
+  ) {}
 
   async create(createPostDto: CreatePostDto, userId: string): Promise<Post> {
     const createdPost = await this.prismaService.post.create({
@@ -20,7 +23,7 @@ export class PostService {
 
     if (!createdPost)
       throw new UnprocessableEntityException(
-        KNOWN_ERRORS.UNABLE_TO_CREATE_POST
+        this.i18nService.t('global.generic-error')
       );
 
     return createdPost;

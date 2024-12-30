@@ -6,13 +6,21 @@ import { CurrentUser } from '@/auth/auth.decorator';
 import { UserPrincipalDTO } from '@/auth/common/auth.dto';
 import { JwtAuthGuard } from '@/auth/guards/jwt.auth.guard';
 import { OptionalJwtAuthGuard } from '@/auth/guards/optionalJwt.auth.guard';
-import { IPreferences } from '@/user/common/types';
+import { IPreferences, IUserProfile } from '@/user/common/types';
 import { ChangeCountryDTO, SwitchThemeDTO } from '@/user/dto/update-user.dto';
 import { UserService } from '@/user/user.service';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+  @Get('me')
+  @UseGuards(JwtAuthGuard)
+  async getMe(
+    @CurrentUser() { sub: userId }: UserPrincipalDTO
+  ): Promise<IUserProfile> {
+    return await this.userService.getProfile(userId);
+  }
 
   @Get('preferences')
   @UseGuards(OptionalJwtAuthGuard)

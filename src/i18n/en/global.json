@@ -1,0 +1,7 @@
+{
+  "user-not-found": "User not found",
+  "user-already-registered": "User already registered",
+  "country-not-found": "Country not found",
+  "theme-not-found": "Theme not found",
+  "generic-error": "There was an error, please try again"
+}

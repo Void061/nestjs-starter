@@ -56,7 +56,7 @@ $ nest g resource entityName
 ## Features
 
 - ✨ Prisma ORM (Postgres)
-- ✨ internationalization (Detects the country of the current user or locates the user.)
+- ✨ internationalization (Detects the country of the current user or locates the user)
 - ✨ Prisma basic seeds system
 - ✨ Supabase auth
 - ✨ Husky

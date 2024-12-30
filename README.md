@@ -29,8 +29,8 @@
 This starter is designed to work closely with this front-end in Next.js [Next js starter](https://github.com/Void061/nextjs-starter)
 
 ## Formatter setup
-- Set your IDE to execute on SAVE prettier and eslint.
-- Set your IDE to EOF Unix Mac.
+- Set your IDE to execute on SAVE prettier and eslint
+- Set your IDE to EOF Unix Mac
 
 ## Project setup
 

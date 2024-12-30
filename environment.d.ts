@@ -6,6 +6,7 @@ declare global {
       ENVIRONMENT: string;
       DATABASE_URL: string;
       JWT_SECRET: string;
+      PORT: string;
     }
   }
 }

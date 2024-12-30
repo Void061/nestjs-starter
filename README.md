@@ -55,7 +55,7 @@ $ nest g resource entityName
 
 ## Features
 
-- ✨ Prisma ORM
+- ✨ Prisma ORM (Postgres)
 - ✨ Prisma basic seeds system
 - ✨ Supabase auth
 - ✨ Husky

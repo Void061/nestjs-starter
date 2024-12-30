@@ -34,6 +34,14 @@ This starter is designed to work closely with this front-end in Next.js [Next js
 $ npm install
 ```
 
+## Setup
+- Set in envs (DATABASE_URL)
+- Populate JWT_SECRET in envs (Go to supabase > settings > API > JWT secret)
+
+```bash
+npx prisma migrate dev --name Init
+```
+
 ## Compile and run the project
 
 ```bash
@@ -63,8 +71,4 @@ $ nest g resource entityName
 - ✨ Prettier
 - ✨ Eslint
 - ✨ LF characters
-
-## Set-up
-
-- Populate JWT_SECRET in envs (Go to supabase > settings > API > JWT secret)
 

@@ -10,6 +10,7 @@ import { I18nService } from 'nestjs-i18n';
 import { CountryService } from '@/country/country.service';
 import { ThemeService } from '@/theme/theme.service';
 import { IPreferences, IUserProfile } from '@/user/common/types';
+import { UpdateUserProfileDTO } from '@/user/dto/update-user.dto';
 import { PrismaService } from '@/utils/prisma.service';
 
 @Injectable()
@@ -20,6 +21,10 @@ export class UserService {
     protected readonly countryService: CountryService,
     protected readonly i18nService: I18nService
   ) {}
+
+  async findOne(id: string): Promise<User | null> {
+    return this.prismaService.user.findUnique({ where: { id } });
+  }
 
   async getPreferences(userId?: string): Promise<IPreferences> {
     if (!userId) return {};
@@ -121,7 +126,34 @@ export class UserService {
     };
   }
 
-  async findOne(id: string): Promise<User | null> {
-    return this.prismaService.user.findUnique({ where: { id } });
+  async updateProfile(
+    newUserProfile: UpdateUserProfileDTO,
+    userId: string
+  ): Promise<IUserProfile> {
+    const currentUser = await this.findOne(userId);
+
+    if (!currentUser)
+      throw new NotFoundException(this.i18nService.t('global.user-not-found'));
+
+    const updatedUser = await this.prismaService.user.update({
+      where: { id: userId },
+      data: {
+        name: newUserProfile.name,
+        surname: newUserProfile.surname,
+      },
+    });
+
+    if (!updatedUser)
+      throw new UnprocessableEntityException(
+        this.i18nService.t('global.generic-error')
+      );
+
+    return {
+      name: updatedUser.name,
+      surname: updatedUser.surname,
+      email: updatedUser.email,
+      country: updatedUser.countryId,
+      theme: updatedUser.themeId,
+    };
   }
 }

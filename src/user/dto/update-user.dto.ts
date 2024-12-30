@@ -11,3 +11,8 @@ export class SwitchThemeDTO {
 export class ChangeCountryDTO {
   countryName: string;
 }
+
+export class UpdateUserProfileDTO {
+  name: string;
+  surname: string;
+}

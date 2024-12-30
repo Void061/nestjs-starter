@@ -7,7 +7,11 @@ import { UserPrincipalDTO } from '@/auth/common/auth.dto';
 import { JwtAuthGuard } from '@/auth/guards/jwt.auth.guard';
 import { OptionalJwtAuthGuard } from '@/auth/guards/optionalJwt.auth.guard';
 import { IPreferences, IUserProfile } from '@/user/common/types';
-import { ChangeCountryDTO, SwitchThemeDTO } from '@/user/dto/update-user.dto';
+import {
+  ChangeCountryDTO,
+  SwitchThemeDTO,
+  UpdateUserProfileDTO,
+} from '@/user/dto/update-user.dto';
 import { UserService } from '@/user/user.service';
 
 @Controller('users')
@@ -46,5 +50,14 @@ export class UserController {
     @CurrentUser() { sub: userId }: UserPrincipalDTO
   ) {
     return await this.userService.changeCountry(params.countryName, userId);
+  }
+
+  @Patch('update-profile')
+  @UseGuards(JwtAuthGuard)
+  async updateProfile(
+    @Body() params: UpdateUserProfileDTO,
+    @CurrentUser() { sub: userId }: UserPrincipalDTO
+  ): Promise<IUserProfile> {
+    return await this.userService.updateProfile(params, userId);
   }
 }
